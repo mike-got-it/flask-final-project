@@ -7,6 +7,6 @@ env = 'development'
 if env not in VALID_ENVS:
     raise RuntimeError("Invalid environment")
 
-config_name = 'cfg.' + env
+config_name = 'main.cfg.' + env
 module = import_module(config_name)
 config = module.Config

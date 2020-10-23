@@ -10,8 +10,8 @@ from flask_jwt_extended import (
 )
 import pdb
 from marshmallow import ValidationError
-import forms
-from models import User, RevokedToken
+import main.forms as forms
+from main.models import User, RevokedToken
 
 
 class HealthCheck(Resource):
@@ -24,7 +24,7 @@ class UserSignUp(Resource):
     def post(self):
         data = request.json
         try:
-            forms.SignUpFormSchema().validate(request.json)
+            forms.SignUpFormSchema().load(data)
         except ValidationError as err:
             return {"message": str(err)}, 400
 
