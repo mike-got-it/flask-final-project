@@ -74,6 +74,10 @@ class Category(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    @classmethod
+    def find_by_id(cls, category_id):
+        return cls.query.filter_by(id=category_id).first()
+
 
 class Item(db.Model):
     """
